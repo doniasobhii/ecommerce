@@ -1,0 +1,30 @@
+<h3 class="mt-3">totalOrderPrice : {{ totalOrderPrice }}</h3>
+<h3>Selected Cat Is : {{ selectedCatId }}</h3>
+<div>
+  <label for=""></label>
+  <select name="" id="" [(ngModel) ]="selectedCatId">
+    <option [value]="cat.id" *ngFor="let cat of categories">
+      {{ cat.name }}
+    </option>
+  </select>
+  <button (click)="change()">Change category</button>
+</div>
+<div class="row row-cols-1 row-cols-md-4 g-4 mt-2 mb-5">
+  <div class="col" *ngFor="let pro of products">
+    <div class="card">
+      <img [src]="pro.imgUrl" class="card-img-top" alt="..." />
+      <div class="card-body">
+        <h5 class="card-title">{{ pro.name }}</h5>
+        <p class="card-text">Price Is {{ pro.price }}</p>
+        <p class="card-text">Quantity Is {{ pro.quantity }}</p>
+        <input type="number" #countInp />
+        <button
+          class="btn btn-success mt-2"
+          (click)="buy(countInp.value, pro.price)"
+        >
+          buy
+        </button>
+      </div>
+    </div>
+  </div>
+</div>
